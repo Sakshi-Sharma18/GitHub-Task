@@ -1,1 +1,71 @@
-Code for Question 2
+//Code for Question 2
+import java.util.*;
+public class HelloWorld
+{
+    static class MatchstickNumber
+    {
+        
+        public void mapGetValue(int n)
+        {
+            Map m= new HashMap();
+            m.put("0","6");
+            m.put(1,2);
+            m.put(2,5);
+            m.put(3,5);
+            m.put(4,4);
+            m.put(5,5);
+            m.put(6,6);
+            m.put(7,3);
+            m.put(8,7);
+            m.put(9,6);
+            int ans=0;
+            while(n>0)
+            {
+                int temp=n%10;
+                ans+=(int)m.get(temp);
+                n=n/10;
+            }
+            System.out.println(ans);
+            System.out.println();
+        }
+    }
+    
+    static class Calculation
+    {
+        int[] values= new int[4];
+        Calculation(int[] values)
+        {
+            this.values=values;
+        }
+        
+        public int getAnswer()
+        {
+            return (values[0]*values[3])+(values[1]*values[3])+values[2];
+        }
+    }
+
+     public static void main(String []args)
+     {
+        
+        int[] n;
+        int[] values= new int[4];
+        Scanner sc=new Scanner(System.in); 
+        int t=sc.nextInt();
+        n= new int[t];
+        for(int j=0;j<t;j++)
+        {
+            for(int i=0;i<4;i++)
+            {
+                values[i]=sc.nextInt();
+            }
+            Calculation C= new Calculation(values);
+            n[j]=C.getAnswer();
+            
+        }
+        MatchstickNumber M=new MatchstickNumber();
+        for(int i=0;i<t;i++)
+        {
+            M.mapGetValue(n[i]);
+        }
+     }
+}
