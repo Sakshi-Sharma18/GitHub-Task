@@ -1,1 +1,76 @@
-Code for question 1
+//Code for question 1
+import java.util.*;
+class Solution1 
+{
+    static class shiftOperation
+    {
+       
+        //int k;
+        public String leftShift(String s, int k)
+        {
+            char[] snew= new char[s.length()];
+            for(int j=0;j<k;j++)
+            {
+                char temp= s.charAt(0);
+                for(int i=0;i<s.length()-1;i++)
+                {
+                     snew[i]=s.charAt(i+1);
+                }
+                snew[s.length()-1]=temp;
+                s= new String(snew);
+            }
+            return s;
+        }
+        
+        public String mapping(String a, String c, String s)
+        {
+            Map m= new HashMap();
+            for(int i=0;i<a.length();i++)
+            {
+                m.put(a.charAt(i),c.charAt(i));
+            }
+            char[] ans= new char[s.length()];
+            for(int i=0;i<s.length();i++)
+            {
+                ans[i]=(char)m.get(s.charAt(i));
+            }
+            s=new String(ans);
+            return s;
+        }
+        
+        public String rightShift(String s, int k)
+        {
+            char[] snew= new char[s.length()];
+            for(int j=0;j<k;j++)
+            {
+                char temp= s.charAt(s.length()-1);
+                for(int i=0;i<s.length()-1;i++)
+                {
+                     snew[i+1]=s.charAt(i);
+                }
+                snew[0]=temp;
+                s= new String(snew);
+            }
+            return s;
+        }
+        
+        
+    }
+        
+        
+    public static void main(String[] args) 
+    {
+        String alpha= "abcdefghijklmnopqrstuvwxyz";
+        String input;
+        Scanner sc = new Scanner(System.in);
+        input=sc.next();
+        int key=sc.nextInt();
+        int shift=sc.nextInt();
+        shiftOperation S= new shiftOperation();
+        String cipher=S.leftShift(alpha,key);
+        String ans= S.mapping(alpha, cipher, input);
+        String output= S.rightShift(ans,shift);
+        System.out.println(output);
+        
+    }
+}
