@@ -1,6 +1,6 @@
 //Code for Question 2
 import java.util.*;
-public class HelloWorld
+public class Solution2
 {
     static class MatchstickNumber
     {
